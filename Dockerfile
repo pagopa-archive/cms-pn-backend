@@ -8,7 +8,7 @@ WORKDIR /app
 ENV NODE_ENV=production
 
 # Copy the required files
-COPY app .
+COPY src/app .
 
 # Install dependencies and run build
 RUN yarn --production --frozen-lockfile
