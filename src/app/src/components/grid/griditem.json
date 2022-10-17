@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_grid_griditems",
+  "info": {
+    "displayName": "Griditem",
+    "icon": "grip-lines-vertical",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "titlemobile": {
+      "type": "string"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "externalurl": {
+      "type": "string"
+    },
+    "target": {
+      "type": "enumeration",
+      "enum": [
+        "_blank"
+      ]
+    },
+    "attributes": {
+      "type": "string"
+    },
+    "cssclass": {
+      "type": "string"
+    },
+    "reactcomponent": {
+      "type": "string"
+    }
+  }
+}
