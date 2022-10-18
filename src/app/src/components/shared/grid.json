@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_shared_grids",
+  "info": {
+    "displayName": "Grid",
+    "icon": "border-all",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "titlemobile": {
+      "type": "string"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "issequential": {
+      "type": "boolean",
+      "default": false
+    },
+    "items": {
+      "displayName": "Griditem",
+      "type": "component",
+      "repeatable": true,
+      "component": "grid.griditem"
+    }
+  }
+}

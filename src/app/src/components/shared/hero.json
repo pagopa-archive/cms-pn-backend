@@ -1,0 +1,55 @@
+{
+  "collectionName": "components_shared_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "align-center",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "titlemobile": {
+      "type": "string"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "imageposition": {
+      "type": "enumeration",
+      "enum": [
+        "right",
+        "left",
+        "top",
+        "bottom"
+      ],
+      "default": "left"
+    },
+    "attributes": {
+      "type": "string"
+    },
+    "cssclass": {
+      "type": "string"
+    },
+    "reactcomponent": {
+      "type": "string"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link"
+    },
+    "extra": {
+      "type": "json"
+    }
+  }
+}
