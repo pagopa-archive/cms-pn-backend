@@ -16,13 +16,15 @@
     "body": {
       "type": "richtext"
     },
+    "issequential": {
+      "type": "boolean",
+      "default": false
+    },
     "image": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "page": {
       "type": "relation",
@@ -34,9 +36,7 @@
     },
     "target": {
       "type": "enumeration",
-      "enum": [
-        "_blank"
-      ]
+      "enum": ["_blank"]
     },
     "attributes": {
       "type": "string"
