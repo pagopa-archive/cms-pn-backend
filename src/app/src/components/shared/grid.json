@@ -16,10 +16,6 @@
     "body": {
       "type": "richtext"
     },
-    "issequential": {
-      "type": "boolean",
-      "default": false
-    },
     "items": {
       "displayName": "Griditem",
       "type": "component",
