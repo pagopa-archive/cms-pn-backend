@@ -49,7 +49,7 @@ jobs:
       
       - name: Download task definition
         run: |
-          aws ecs describe-task-definition 
+          aws ecs describe-task-definition \
           --task-definition pn-d-strapi-task \
           --query taskDefinition > task-definition.json
 
