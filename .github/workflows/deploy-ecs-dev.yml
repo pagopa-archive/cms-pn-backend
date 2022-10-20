@@ -1,0 +1,66 @@
+name: "Deploy-Dev"
+
+on:
+  workflow_run:
+    workflows: ["Release"]
+    types:
+      - completed
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning' 
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+        
+env:
+ AWS_REGION: eu-south-1
+ IAM_ROLE: arn:aws:iam::516175876821:role/GitHubActionDeployECS
+ IMAGE: ghcr.io/pagopa/cms-pn-backend
+
+defaults:
+  run:
+    shell: bash
+    working-directory: src/main
+
+permissions:
+  id-token: write   # This is required for requesting the JWT
+  contents: read    # This is required for actions/checkout
+
+jobs:
+  deploy:
+    
+    name: "Deploy on ECS"
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ env.IAM_ROLE }}
+          aws-region: ${{ env.AWS_REGION }}
+      
+      - name: Download task definition
+        run: |
+          aws ecs describe-task-definition --task-definition pn-d-strapi-task \
+          --query taskDefinition > task-definition.json
+
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: task-definition.json
+          container-name: pn-d-strapi-task
+          image: "${{ env.IMAGE }}:latest"
+      
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: pn-d-strapi-srv
+          cluster: pn-d-ecs-cluster
+          wait-for-service-stability: true
