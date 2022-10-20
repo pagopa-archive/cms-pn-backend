@@ -16,6 +16,11 @@
     "body": {
       "type": "richtext"
     },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["grid", "walk"],
+      "default": "grid"
+    },
     "items": {
       "displayName": "Griditem",
       "type": "component",
